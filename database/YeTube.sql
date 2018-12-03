@@ -1,52 +1,54 @@
-CREATE TABLE `Tags` (
-  `TagName` varchar(30),
-  `TagID` int NOT NULL AUTO_INCREMENT ,
-  PRIMARY KEY (`TagID`)
+CREATE DATABASE IF NOT EXISTS YeTube2;
+
+CREATE TABLE `tags` (
+  `tag_name` varchar(30),
+  `tag_id` int NOT NULL AUTO_INCREMENT ,
+  PRIMARY KEY (`tag_id`)
 );
 
-CREATE TABLE `VideoTags` (
-  `VideoID` int,
-  `TagID` int,
-  PRIMARY KEY (`VideoID`, `TagID`)
+CREATE TABLE `videoTags` (
+  `video_id` int,
+  `tag_id` int,
+  PRIMARY KEY (`video_id`, `tag_id`)
 );
 
 CREATE TABLE `Video Rating` (
-  `Video ID` int,
-  `Rated` tinyint,
-  `User ID` int,
-  PRIMARY KEY (`Video ID`)
+  `video_id` int,
+  `rated` tinyint,
+  `user_id` int,
+  PRIMARY KEY (`video_id`)
 );
 
 CREATE TABLE `Comment Rating` (
-  `Comment ID` int,
-  `Rated` tinyint,
-  `User ID` int,
-  PRIMARY KEY (`Comment ID`)
+  `comment_id` int,
+  `rated` tinyint,
+  `user_id` int,
+  PRIMARY KEY (`comment_id`)
 );
 
 CREATE TABLE `User` (
-  `UserID` int NOT NULL AUTO_INCREMENT,
-  `AuthO ID` varchar(100),
-  PRIMARY KEY (`UserID`)
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `auth0_id` varchar(100),
+  PRIMARY KEY (`user_id`)
 );
 
 CREATE TABLE `Video` (
-  `Video ID` int NOT NULL AUTO_INCREMENT,
-  `User ID` int,
-  `Views` int,
-  `Description` TEXT,
-  `Location of Video on server` varchar(200),
-  `Location of Thumbnail on server` varchar(200),
+  `video_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int,
+  `views` int,
+  `description` TEXT,
+  `video_path` varchar(200),
+  `thumbnail_path` varchar(200),
   `Catagory` varchar(40),
-  PRIMARY KEY (`Video ID`)
+  PRIMARY KEY (`video_id`)
 );
 
 CREATE TABLE `Comments` (
-  `Video ID` int,
-  `Comment ID` int NOT NULL AUTO_INCREMENT,
-  `ParentToId` tinyint,
-  `UserID` int,
+  `video_id` int,
+  `comment_id` int NOT NULL AUTO_INCREMENT,
+  `parent_id` tinyint,
+  `user_id` int,
   `comment` varchar(255),
-  PRIMARY KEY (`Comment ID`)
+  PRIMARY KEY (`comment_id`)
 );
 
